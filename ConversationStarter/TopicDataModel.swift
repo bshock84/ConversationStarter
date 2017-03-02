@@ -8,23 +8,6 @@
 
 import Foundation
 
-//struct TopicObject {
-//    var topicCategory: String
-//    var topicsArray: [String]
-//}
-//
-//class Topics {
-//    
-//    var allTopics: [TopicObject] = [
-//                                    TopicObject.init(topicCategory: "Relationship Topics", topicsArray: [
-//                                        "What's your favorite position",
-//                                        "How many partners have you had?"
-//                                        ])
-//    ]
-//    
-//}
-
-
 enum TopicCategory: String {
     case relationship = "Relationships"
     case personalHistory = "Personal History"
@@ -36,7 +19,7 @@ enum TopicCategory: String {
     case sports = "Sports"
     case food = "Food"
     case travel = "Travel"
-    case fasion = "Fasion"
+    case fashion = "Fashion"
     case goals = "Goals"
     case seasons = "Seasons"
     case holidays = "Holidays"
@@ -46,8 +29,11 @@ enum TopicCategory: String {
     case deep = "Deep"
     case family = "Family"
     case miscellaneous = "Miscellaneous"
+    case wouldYouRather = "Would You Rather"
     
+    //MARK: IMPORTANT!!!: This is an array that holds a list of all the cases in the above enum.  If you add a case to the enum you MUST add it here in the array as well or the app will not work correctly.
     
+    static let topicCategoriesArray: [TopicCategory] = [.relationship, .personalHistory, .sex, .movies, .music, .hobbies, .books, .sports, .food, .travel, .fashion, .goals, .seasons, .holidays, .education, .politics, .weird, .deep, .family, .miscellaneous, .wouldYouRather]
     
 }
 
@@ -55,4 +41,13 @@ struct TopicObject {
     let topicCategory: TopicCategory
     let topicText: String
     let dontAskAgain: Bool = false
+}
+
+class Topics {
+    
+    var allTopics: [TopicObject] = [
+        TopicObject.init(topicCategory: .weird, topicText: "Time freezes for everyone except you for one day; What do you do?"),
+        TopicObject.init(topicCategory: .food, topicText: "What is your favorite food?"),
+        TopicObject.init(topicCategory: .education, topicText: "What do you think about online education?")
+    ]
 }
