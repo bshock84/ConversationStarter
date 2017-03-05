@@ -14,7 +14,7 @@
         <scene sceneID="Ihc-4k-HIW">
             <objects>
                 <navigationController id="aY6-ko-bPw" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TxY-eM-V4l">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TxY-eM-V4l">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -51,17 +51,23 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" image="getNewTopicButton"/>
+                                <connections>
+                                    <action selector="getNewTopicButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ACk-31-ASq"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="xVa-hb-H6G">
-                                <rect key="frame" x="20" y="173" width="368" height="201"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="this is a test" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="xVa-hb-H6G">
+                                <rect key="frame" x="25" y="173" width="359" height="201"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.62101293103448274" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lKM-DU-BCd">
                                 <rect key="frame" x="143" y="604" width="128" height="30"/>
                                 <state key="normal" title="Filter Topics"/>
+                                <connections>
+                                    <action selector="filterTopicsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wjc-ZP-ZA5"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.71372549019607845" green="0.71372549019607845" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
@@ -80,17 +86,28 @@
                             <constraint firstItem="lKM-DU-BCd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" priority="750" constant="123" id="cgb-K9-MZe"/>
                             <constraint firstItem="UqY-HL-hR2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" priority="900" constant="60" id="hcI-wz-ycJ"/>
                             <constraint firstItem="sRU-BG-KHa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="60" id="jBv-6D-igm"/>
-                            <constraint firstItem="xVa-hb-H6G" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="-6" id="v1H-c8-ra4"/>
+                            <constraint firstItem="xVa-hb-H6G" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="-10" id="v1H-c8-ra4"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="lKM-DU-BCd" secondAttribute="bottom" constant="50" id="vtn-UZ-UxS"/>
-                            <constraint firstItem="xVa-hb-H6G" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="yzP-tP-hf6"/>
+                            <constraint firstItem="xVa-hb-H6G" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="yzP-tP-hf6"/>
                             <constraint firstItem="UqY-HL-hR2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zN5-hG-KA6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lKM-DU-BCd" secondAttribute="trailing" priority="750" constant="123" id="zkA-xe-Wfo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Conversation Starter" id="uw1-IX-bvj">
-                        <barButtonItem key="leftBarButtonItem" image="cog" id="0ba-Kg-H8D"/>
-                        <barButtonItem key="rightBarButtonItem" image="Help-50" style="done" id="eKj-UJ-9a2"/>
+                        <barButtonItem key="leftBarButtonItem" image="cog" id="0ba-Kg-H8D">
+                            <connections>
+                                <action selector="settingsButton:" destination="BYZ-38-t0r" id="2JX-1v-gjS"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="Help-50" style="done" id="eKj-UJ-9a2">
+                            <connections>
+                                <action selector="helpButton:" destination="BYZ-38-t0r" id="sgP-u7-PTi"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="topicLabel" destination="xVa-hb-H6G" id="W0N-nH-raz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

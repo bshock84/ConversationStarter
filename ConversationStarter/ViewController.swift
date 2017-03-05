@@ -10,8 +10,23 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var topicLabel: UILabel!
     let topics = Topics()
 
+    @IBAction func helpButton(_ sender: Any) {
+    }
+    
+    @IBAction func settingsButton(_ sender: Any) {
+    }
+    
+    @IBAction func filterTopicsButton(_ sender: Any) {
+    }
+    
+    @IBAction func getNewTopicButton(_ sender: Any) {
+        let newTopic: TopicObject = topics.getNewTopic()
+        topicLabel.text = newTopic.topicText
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
