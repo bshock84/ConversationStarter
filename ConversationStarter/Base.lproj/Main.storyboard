@@ -13,6 +13,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Ihc-4k-HIW">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kB5-56-f9o" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="aY6-ko-bPw" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="TxY-eM-V4l">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -22,7 +23,6 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="YAA-SW-4Mv"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kB5-56-f9o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1398" y="-57"/>
         </scene>
@@ -112,6 +112,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.23188405797103" y="136.95652173913044"/>
+        </scene>
+        <!--Filter Table View Controller-->
+        <scene sceneID="wo5-Ki-hjh">
+            <objects>
+                <tableViewController storyboardIdentifier="filterTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UhJ-RO-Rdl" customClass="filterTableViewController" customModule="ConversationStarter" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="my3-Og-gsZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="categoryCell" textLabel="AW2-L6-Xcv" style="IBUITableViewCellStyleDefault" id="0fI-ln-nOv">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0fI-ln-nOv" id="zwR-d1-LXa">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AW2-L6-Xcv">
+                                            <rect key="frame" x="15" y="0.0" width="360" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="UhJ-RO-Rdl" id="JW5-17-zWc"/>
+                            <outlet property="delegate" destination="UhJ-RO-Rdl" id="az1-nw-103"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7l7-gz-vFl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1238" y="221"/>
         </scene>
     </scenes>
     <resources>

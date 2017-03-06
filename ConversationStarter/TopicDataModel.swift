@@ -75,6 +75,7 @@ class Topics {
     
     var topicsToSelectFrom: [TopicObject] = []
     private var previouslyUsedTopicIndeces: [Int] = []
+    let alertController = AlertController()
     var selectedCategories: [TopicCategory] = [.goals, .weird, .books]
     
     func loadTopicsFromDatabase() {
@@ -126,6 +127,8 @@ class Topics {
                 if topicsToSelectFrom.count == previouslyUsedTopicIndeces.count {
                     previouslyUsedTopicIndeces = []
                     print("\n**** End of array has been reached.  Starting over.****\n")
+                    alertController.showStandardAlert(alertTitle: "End of Topics", alertMessage: "You have read all the topics.  Starting over.")
+                    
                 } else {
                     didFindNumber = false
                 }

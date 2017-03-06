@@ -12,6 +12,7 @@
 		EB4F24531E6244AD009014CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB4F24511E6244AD009014CE /* Main.storyboard */; };
 		EB4F24581E6244AD009014CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB4F24561E6244AD009014CE /* LaunchScreen.storyboard */; };
 		EB52AFBE1E6BB9F70013F75F /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB52AFBD1E6BB9F70013F75F /* AlertController.swift */; };
+		EB52AFC01E6CC4860013F75F /* filterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB52AFBF1E6CC4860013F75F /* filterTableViewController.swift */; };
 		EBE65F9A1E6267CB00FC4C73 /* TopicDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE65F991E6267CB00FC4C73 /* TopicDataModel.swift */; };
 		EBE65F9C1E62794400FC4C73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBE65F9B1E62794400FC4C73 /* Assets.xcassets */; };
 		EBE65F9E1E6BAF2600FC4C73 /* GOODDP__.TTF in Resources */ = {isa = PBXBuildFile; fileRef = EBE65F9D1E6BAF2600FC4C73 /* GOODDP__.TTF */; };
@@ -25,6 +26,7 @@
 		EB4F24571E6244AD009014CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB4F24591E6244AD009014CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB52AFBD1E6BB9F70013F75F /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		EB52AFBF1E6CC4860013F75F /* filterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = filterTableViewController.swift; sourceTree = "<group>"; };
 		EBE65F991E6267CB00FC4C73 /* TopicDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicDataModel.swift; sourceTree = "<group>"; };
 		EBE65F9B1E62794400FC4C73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBE65F9D1E6BAF2600FC4C73 /* GOODDP__.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOODDP__.TTF; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				EB4F24561E6244AD009014CE /* LaunchScreen.storyboard */,
 				EB4F24591E6244AD009014CE /* Info.plist */,
 				EB52AFBD1E6BB9F70013F75F /* AlertController.swift */,
+				EB52AFBF1E6CC4860013F75F /* filterTableViewController.swift */,
 			);
 			path = ConversationStarter;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB52AFC01E6CC4860013F75F /* filterTableViewController.swift in Sources */,
 				EB52AFBE1E6BB9F70013F75F /* AlertController.swift in Sources */,
 				EBE65F9A1E6267CB00FC4C73 /* TopicDataModel.swift in Sources */,
 				EB4F24501E6244AD009014CE /* ViewController.swift in Sources */,

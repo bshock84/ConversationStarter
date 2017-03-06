@@ -7,7 +7,25 @@
 //
 
 import Foundation
+import UIKit
 
-class AlertController {
-    let alert = 
+class AlertController: UIViewController {
+    
+    func showStandardAlert(alertTitle: String, alertMessage: String) {
+        
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+        
+        var visibleVC = UIViewController()
+        
+        if navigationController == nil {
+            visibleVC = (UIApplication.shared.keyWindow?.rootViewController)!
+        } else if navigationController?.visibleViewController != nil {
+            visibleVC = (navigationController?.visibleViewController!)!
+        }
+        
+        visibleVC.present(alert, animated: true, completion: nil)
+        
+    
+    }
 }

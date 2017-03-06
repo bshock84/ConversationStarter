@@ -20,11 +20,21 @@ class ViewController: UIViewController {
     }
     
     @IBAction func filterTopicsButton(_ sender: Any) {
+        navigationItem.title = nil
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let filterVC = storyboard.instantiateViewController(withIdentifier: "filterTableViewController") as! filterTableViewController
+        navigationController?.pushViewController(filterVC, animated: true)
+        
     }
     
     @IBAction func getNewTopicButton(_ sender: Any) {
         let newTopic: TopicObject = topics.getNewTopic()
         topicLabel.text = newTopic.topicText
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.title = "Conversation Starter"
     }
     
     override func viewDidLoad() {
@@ -40,6 +50,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
 
 }
 
