@@ -13,6 +13,8 @@
 		EB4F24581E6244AD009014CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB4F24561E6244AD009014CE /* LaunchScreen.storyboard */; };
 		EB52AFBE1E6BB9F70013F75F /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB52AFBD1E6BB9F70013F75F /* AlertController.swift */; };
 		EB52AFC01E6CC4860013F75F /* filterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB52AFBF1E6CC4860013F75F /* filterTableViewController.swift */; };
+		EB52AFC21E724D530013F75F /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB52AFC11E724D530013F75F /* CoreDataController.swift */; };
+		EB52AFC51E724D820013F75F /* AppData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB52AFC31E724D820013F75F /* AppData.xcdatamodeld */; };
 		EBE65F9A1E6267CB00FC4C73 /* TopicDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE65F991E6267CB00FC4C73 /* TopicDataModel.swift */; };
 		EBE65F9C1E62794400FC4C73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBE65F9B1E62794400FC4C73 /* Assets.xcassets */; };
 		EBE65F9E1E6BAF2600FC4C73 /* GOODDP__.TTF in Resources */ = {isa = PBXBuildFile; fileRef = EBE65F9D1E6BAF2600FC4C73 /* GOODDP__.TTF */; };
@@ -27,6 +29,8 @@
 		EB4F24591E6244AD009014CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB52AFBD1E6BB9F70013F75F /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		EB52AFBF1E6CC4860013F75F /* filterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = filterTableViewController.swift; sourceTree = "<group>"; };
+		EB52AFC11E724D530013F75F /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		EB52AFC41E724D820013F75F /* AppData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppData.xcdatamodel; sourceTree = "<group>"; };
 		EBE65F991E6267CB00FC4C73 /* TopicDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicDataModel.swift; sourceTree = "<group>"; };
 		EBE65F9B1E62794400FC4C73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBE65F9D1E6BAF2600FC4C73 /* GOODDP__.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOODDP__.TTF; sourceTree = "<group>"; };
@@ -62,6 +66,7 @@
 		EB4F244C1E6244AD009014CE /* ConversationStarter */ = {
 			isa = PBXGroup;
 			children = (
+				EB52AFC61E73E38F0013F75F /* DataStore */,
 				EB4F244D1E6244AD009014CE /* AppDelegate.swift */,
 				EBE65F991E6267CB00FC4C73 /* TopicDataModel.swift */,
 				EB4F244F1E6244AD009014CE /* ViewController.swift */,
@@ -72,8 +77,17 @@
 				EB4F24591E6244AD009014CE /* Info.plist */,
 				EB52AFBD1E6BB9F70013F75F /* AlertController.swift */,
 				EB52AFBF1E6CC4860013F75F /* filterTableViewController.swift */,
+				EB52AFC11E724D530013F75F /* CoreDataController.swift */,
+				EB52AFC31E724D820013F75F /* AppData.xcdatamodeld */,
 			);
 			path = ConversationStarter;
+			sourceTree = "<group>";
+		};
+		EB52AFC61E73E38F0013F75F /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DataStore;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +166,8 @@
 			files = (
 				EB52AFC01E6CC4860013F75F /* filterTableViewController.swift in Sources */,
 				EB52AFBE1E6BB9F70013F75F /* AlertController.swift in Sources */,
+				EB52AFC21E724D530013F75F /* CoreDataController.swift in Sources */,
+				EB52AFC51E724D820013F75F /* AppData.xcdatamodeld in Sources */,
 				EBE65F9A1E6267CB00FC4C73 /* TopicDataModel.swift in Sources */,
 				EB4F24501E6244AD009014CE /* ViewController.swift in Sources */,
 				EB4F244E1E6244AD009014CE /* AppDelegate.swift in Sources */,
@@ -321,6 +337,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EB52AFC31E724D820013F75F /* AppData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EB52AFC41E724D820013F75F /* AppData.xcdatamodel */,
+			);
+			currentVersion = EB52AFC41E724D820013F75F /* AppData.xcdatamodel */;
+			path = AppData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EB4F24421E6244AD009014CE /* Project object */;
 }

@@ -66,9 +66,11 @@ class filterTableViewController: UITableViewController {
         if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
             tableView.cellForRow(at: indexPath)?.accessoryType = .none
             removeCategory(index: indexPath)
+            topics.filterTopicCategories()
         } else {
             tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
             addCategory(index: indexPath)
+            topics.filterTopicCategories()
         }
     }
     
