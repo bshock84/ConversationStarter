@@ -7,7 +7,10 @@
 //
 
 import Foundation
-var textTopics: [(category: TopicCategoryEnum, text: String)] = [
+
+
+
+var testTopics: [(category: TopicCategoryEnum, text: String)] = [
     (category: .weird, text: "Time freezes for everyone except you for one day; What do you do?"),
     (category: .food, text: "What is your favorite food?"),
     (category: .education, text: "What do you think about online education?"),
@@ -31,3 +34,11 @@ var textTopics: [(category: TopicCategoryEnum, text: String)] = [
     (category: .deep, text: "What are the highest and lowest points of your life?"),
     (category: .miscellaneous, text: "This is a misc question?")
 ]
+
+class Test {
+    func addAllTestCases() {
+        let topicController = TopicsController()
+        for item in testTopics {
+            topicController.addNewTopic(category: item.category, text: item.text)        }
+    }
+}

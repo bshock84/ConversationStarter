@@ -94,8 +94,10 @@ class TopicsController {
     func addNewTopic(category: TopicCategoryEnum, text: String) {
         let newTopic = NSEntityDescription.insertNewObject(forEntityName: TopicObject.identifier, into: dataController.managedObjectContext) as! TopicObject
         newTopic.topicText = text
-        newTopic.topicToCategoryRelationship = category.rawValue
+        newTopic.topicCategory = category.rawValue
+        print(newTopic)
         
+        dataController.saveContext()
     }
     
 //    func listTopicsByCategory(category: TopicCategory) -> [TopicObject] {

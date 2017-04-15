@@ -17,7 +17,7 @@ extension TopicObject {
     }
 
     @NSManaged public var dontAskAgain: Bool
-    @NSManaged public var topicText: String?
-    @NSManaged public var topicToCategoryRelationship: TopicCategory?
+    @NSManaged public var topicText: String
+    @NSManaged public var topicCategory: String
 
 }

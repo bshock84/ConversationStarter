@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let tests = Test()
+    
     @IBOutlet weak var topicLabel: UILabel!
     let topics = TopicsController()
 
@@ -39,6 +41,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tests.addAllTestCases()
         // Do any additional setup after loading the view, typically from a nib.
         
         //topics.filterTopicCategories()

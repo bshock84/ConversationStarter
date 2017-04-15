@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="15G1421" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="TopicCategory" representedClassName="TopicCategory" syncable="YES">
-        <attribute name="categoryName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="categoryToTopicRelationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TopicObject" inverseName="topicToCategoryRelationship" inverseEntity="TopicObject" syncable="YES"/>
-    </entity>
     <entity name="TopicObject" representedClassName="TopicObject" syncable="YES">
-        <attribute name="dontAskAgain" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="topicText" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="topicToCategoryRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TopicCategory" inverseName="categoryToTopicRelationship" inverseEntity="TopicCategory" syncable="YES"/>
+        <attribute name="dontAskAgain" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="topicCategory" attributeType="String" syncable="YES"/>
+        <attribute name="topicText" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="TopicObject" positionX="-63" positionY="-18" width="128" height="88"/>
-        <element name="TopicCategory" positionX="-351" positionY="-6" width="128" height="73"/>
     </elements>
 </model>
