@@ -8,6 +8,7 @@
 
 import Foundation
 import GameKit
+import CoreData
 
 enum TopicCategory: String {
     case relationship = "Relationships"
@@ -38,17 +39,42 @@ enum TopicCategory: String {
     
 }
 
-struct TopicObject {
-    let topicCategory: TopicCategory
-    let topicText: String
-    let dontAskAgain: Bool = false
+@objc(TopicObject)
+public class TopicObject: NSManagedObject {
+    
+    static let identifier = "TopicObject"
+    
+    static let topicFetchRequest: NSFetchRequest = { () -> NSFetchRequest<TopicObject> in
+        let request = NSFetchRequest<TopicObject>(entityName: TopicObject.identifier)
+        let sortDescriptor = NSSortDescriptor(key: "topicText", ascending: false)
+        
+        request.sortDescriptors = [sortDescriptor]
+        
+        return request
+    }()
+    
+//    let topicCategory: TopicCategory
+//    let topicText: String
+//    let dontAskAgain: Bool = false
 }
+
+extension TopicObject {
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<TopicObject> {
+        return NSFetchRequest<TopicObject>(entityName: "TopicObject")
+    }
+    
+    @NSManaged public var topicCategory: NSObject
+    @NSManaged public var topicText: String
+    @NSManaged public var dontAskAagain: Bool
+    
+}   
 
 class Topics {
     
     //MARK: These are test cases.  They need to be removed and added to the database before publishing app.
     
     var allTopics: [TopicObject] = [
+        TopicObject.
         TopicObject.init(topicCategory: .weird, topicText: "Time freezes for everyone except you for one day; What do you do?"),
         TopicObject.init(topicCategory: .food, topicText: "What is your favorite food?"),
         TopicObject.init(topicCategory: .education, topicText: "What do you think about online education?"),
@@ -77,6 +103,7 @@ class Topics {
     private var previouslyUsedTopicIndeces: [Int] = []
     let alertController = AlertController()
     var selectedCategories: [TopicCategory] = [.goals, .weird, .books]
+    let dataController = DataController.sharedInstance
     
     func loadTopicsFromDatabase() {
         
@@ -87,6 +114,7 @@ class Topics {
     }
     
     func getNewTopic() -> TopicObject {
+        
         let index: Int = getRandomIndex()
         return topicsToSelectFrom[index]
     }

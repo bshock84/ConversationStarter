@@ -39,7 +39,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let controller = CoreDataController.sharedInstance
         // Do any additional setup after loading the view, typically from a nib.
         
         topics.filterTopicCategories()

@@ -11,35 +11,81 @@ import UIKit
 import CoreData
 
 
-class CoreDataController: NSObject {
+public class DataController: NSObject {
     
-    var managedObjectContext = NSManagedObjectContext()
+    static let sharedInstance = DataController()
     
     private override init() {
-    
-        guard let modelURL = Bundle.main.url(forResource: "AppData", withExtension: "momd") else {
-            fatalError("Error loading data from the main bundle")
-        }
-        
-        guard let mom = NSManagedObjectModel(contentsOf: modelURL) else {
-            fatalError("Error creating object model from \(modelURL)")
-        }
-        
-        let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
-        managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        managedObjectContext.persistentStoreCoordinator = psc
-        
-        DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
-            let URL = Bundle.main.resourceURL?.appendingPathComponent("DataStore", isDirectory: true)
-            let storeURL = URL?.appendingPathComponent("AppData.sqllite")
-            
-            do {
-                try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: nil)
-            } catch {
-                fatalError("Error migrating store")
-            }
-        }
         
     }
-    static let sharedInstance = CoreDataController()
+    
+    private lazy var applicationDocumentsDirectory: URL = {
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return urls.last!
+    }()
+    
+    private lazy var managedObjectModel: NSManagedObjectModel = {
+       let modelURL = Bundle.main.url(forResource: "AppData", withExtension: "momd")!
+        return NSManagedObjectModel(contentsOf: modelURL)!
+    }()
+    
+    private lazy var persistantStoreCoordinator: NSPersistentStoreCoordinator = {
+       let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
+        let url = self.applicationDocumentsDirectory.appendingPathComponent("AppData.sqllite")
+        
+        do {
+            try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
+        } catch {
+            let userInfo: [String: Any] = [
+                NSLocalizedDescriptionKey: " Failed to initialize the saved data",
+                NSLocalizedFailureReasonErrorKey: "There was an error creating or loading the application's saved data",
+                NSUnderlyingErrorKey: error as NSError
+            ]
+            let wrappedError = NSError(domain: "com.ShockedStudios.CoreDataError", code: 9999, userInfo: userInfo)
+            print("Unresolved Error \(wrappedError), \(wrappedError.userInfo)")
+            abort()
+        }
+        return coordinator
+    }()
+    
+    public lazy var managedObjectContext: NSManagedObjectContext = {
+       let coordinator = self.persistantStoreCoordinator
+        let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        
+        managedObjectContext.persistentStoreCoordinator = coordinator
+        return managedObjectContext
+    }()
+    
+    public func saveContext() {
+        if managedObjectContext.hasChanges {
+            do {
+                try managedObjectContext.save()
+            } catch {
+                let userInfo: [String: Any] = [
+                    NSLocalizedDescriptionKey: "Failed to save the managedObjectContext to disk",
+                    NSLocalizedFailureReasonErrorKey: "there was an error saving the managedObjectContext to the persistent store.",
+                    NSUnderlyingErrorKey: error
+                ]
+                
+                let wrappedError = NSError(domain: "com.ShockedStudios.CoreDataError", code: 9998, userInfo: userInfo)
+                print("Unresolved Error \(wrappedError), \(wrappedError.userInfo)")
+                abort()
+                
+            }
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

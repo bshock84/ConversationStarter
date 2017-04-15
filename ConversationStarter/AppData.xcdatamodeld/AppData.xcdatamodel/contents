@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="15F34" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="TopicData" representedClassName="TopicData" syncable="YES" codeGenerationType="class">
-        <attribute name="allTopics" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="filteredCategories" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="topicsToChooseFrom" optional="YES" attributeType="Transformable" syncable="YES"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="15G1421" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="TopicObject" representedClassName="TopicObject" syncable="YES">
+        <attribute name="dontAskAgain" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="topicCategory" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="topicText" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="TopicData" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="TopicObject" positionX="-63" positionY="-18" width="128" height="90"/>
     </elements>
 </model>
