@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var topicLabel: UILabel!
-    let topics = Topics()
+    let topics = TopicsController()
 
     @IBAction func helpButton(_ sender: Any) {
     }
@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        topics.filterTopicCategories()
+        //topics.filterTopicCategories()
         print(topics.topicsToSelectFrom)
     }
 

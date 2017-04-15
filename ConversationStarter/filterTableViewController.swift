@@ -10,7 +10,7 @@ import UIKit
 
 class filterTableViewController: UITableViewController {
     
-    let topics = Topics()
+    let topics = TopicsController()
     
     
     
@@ -41,7 +41,7 @@ class filterTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numberOfRows = TopicCategory.topicCategoriesArray.count
+        let numberOfRows = 0
         return numberOfRows
     }
 
@@ -49,50 +49,51 @@ class filterTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
         
-        let category = TopicCategory.topicCategoriesArray[indexPath.row]
-        cell.textLabel?.text = category.rawValue
-        
-        if topics.selectedCategories.contains(category) {
-            cell.accessoryType = .checkmark
-        } else {
-            cell.accessoryType = .none
-        }
+//        let category = TopicCategory.topicCategoriesArray[indexPath.row]
+//        cell.textLabel?.text = category.rawValue
+//        
+//        if topics.selectedCategories.contains(category) {
+//            cell.accessoryType = .checkmark
+//        } else {
+//            cell.accessoryType = .none
+//        }
 
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-            removeCategory(index: indexPath)
-            topics.filterTopicCategories()
-        } else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-            addCategory(index: indexPath)
-            topics.filterTopicCategories()
-        }
-    }
-    
-    func addCategory(index: IndexPath) {
-        let category = TopicCategory.topicCategoriesArray[index.row]
-        topics.selectedCategories.append(category)
-        //print("\n\n\(topics.selectedCategories)\n\n")
+//        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
+//            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+//            removeCategory(index: indexPath)
+//            topics.filterTopicCategories()
+//        } else {
+//            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+//            addCategory(index: indexPath)
+//            topics.filterTopicCategories()
+//        }
+  }
         
-    }
     
-    func removeCategory(index: IndexPath) {
-        let category = TopicCategory.topicCategoriesArray[index.row]
-        
-        if topics.selectedCategories.contains(category) {
-            for (index, categoryItem) in topics.selectedCategories.enumerated() {
-                if categoryItem == category {
-                    topics.selectedCategories.remove(at: index)
-                }
-            }
-        }
-        //print("\n\n \(topics.selectedCategories) \n\n")
-    }
+//    func addCategory(index: IndexPath) {
+//        let category = TopicCategory.topicCategoriesArray[index.row]
+//        topics.selectedCategories.append(category)
+//        //print("\n\n\(topics.selectedCategories)\n\n")
+//        
+//    }
+    
+//    func removeCategory(index: IndexPath) {
+//        let category = TopicCategory.topicCategoriesArray[index.row]
+//        
+//        if topics.selectedCategories.contains(category) {
+//            for (index, categoryItem) in topics.selectedCategories.enumerated() {
+//                if categoryItem == category {
+//                    topics.selectedCategories.remove(at: index)
+//                }
+//            }
+//        }
+//        //print("\n\n \(topics.selectedCategories) \n\n")
+//    }
     
     
     /*
