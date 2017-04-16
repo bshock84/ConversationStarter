@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let filterVC = storyboard.instantiateViewController(withIdentifier: "filterTableViewController") as! filterTableViewController
         navigationController?.pushViewController(filterVC, animated: true)
+        filterVC.topics = topics
         
     }
     

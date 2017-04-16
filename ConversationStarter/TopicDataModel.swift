@@ -45,18 +45,6 @@ enum TopicCategoryEnum: String {
 }
 
 
-
-//extension TopicObject {
-//    @nonobjc public class func fetchRequest() -> NSFetchRequest<TopicObject> {
-//        return NSFetchRequest<TopicObject>(entityName: "TopicObject")
-//    }
-
-//    @NSManaged public var topicCategory: NSObject
-//    @NSManaged public var topicText: String
-//    @NSManaged public var dontAskAagain: Bool
-    
-//}   
-
 class TopicsController {
     
     var topicsToSelectFrom: [TopicObject] = []
@@ -64,6 +52,26 @@ class TopicsController {
     let alertController = AlertController()
     var selectedCategories: [TopicCategoryEnum] = [.goals, .weird, .books]
     let dataController = DataController.sharedInstance
+    
+    func addCategory(index: IndexPath) {
+        let category = TopicCategoryEnum.topicCategoriesArray[index.row]
+        selectedCategories.append(category)
+        print("\n\n\(selectedCategories)\n\n")
+        
+    }
+    
+    func removeCategory(index: IndexPath) {
+        let category = TopicCategoryEnum.topicCategoriesArray[index.row]
+        
+        if selectedCategories.contains(category) {
+            for (index, categoryItem) in selectedCategories.enumerated() {
+                if categoryItem == category {
+                    selectedCategories.remove(at: index)
+                }
+            }
+        }
+        print("\n\n \(selectedCategories) \n\n")
+    }
     
     func loadTopicsFromDatabase() {
         
@@ -83,7 +91,6 @@ class TopicsController {
         let newTopic = NSEntityDescription.insertNewObject(forEntityName: TopicObject.identifier, into: dataController.managedObjectContext) as! TopicObject
         newTopic.topicText = text
         newTopic.topicCategory = category.rawValue
-        print(newTopic)
         
         dataController.saveContext()
     }
@@ -100,14 +107,15 @@ class TopicsController {
 //        return topicByCategory
 //    }
     
-//    func filterTopicCategories() {
+    func filterTopicCategories() {
+        //MARK: this needs to be rebuilt to work with new data model
 //        for topic in allTopics {
 //            if selectedCategories.contains(topic.topicCategory) {
 //                topicsToSelectFrom.append(topic)
 //            }
 //        }
-//        
-//    }
+        
+    }
     
     private func getRandomIndex() -> Int {
         var didFindNumber = false
