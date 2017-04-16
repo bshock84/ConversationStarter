@@ -50,18 +50,19 @@ class TopicsController {
     var topicsToSelectFrom: [TopicObject] = []
     private var previouslyUsedTopicIndeces: [Int] = []
     let alertController = AlertController()
-    var selectedCategories: [TopicCategoryEnum] = [.goals, .weird, .books]
+    var selectedCategories: [String] = [TopicCategoryEnum.goals.rawValue, TopicCategoryEnum.weird.rawValue, TopicCategoryEnum.books.rawValue]
     let dataController = DataController.sharedInstance
+    let fetchController = FetchController()
     
     func addCategory(index: IndexPath) {
-        let category = TopicCategoryEnum.topicCategoriesArray[index.row]
+        let category = TopicCategoryEnum.topicCategoriesArray[index.row].rawValue
         selectedCategories.append(category)
         print("\n\n\(selectedCategories)\n\n")
         
     }
     
     func removeCategory(index: IndexPath) {
-        let category = TopicCategoryEnum.topicCategoriesArray[index.row]
+        let category = TopicCategoryEnum.topicCategoriesArray[index.row].rawValue
         
         if selectedCategories.contains(category) {
             for (index, categoryItem) in selectedCategories.enumerated() {
@@ -71,14 +72,6 @@ class TopicsController {
             }
         }
         print("\n\n \(selectedCategories) \n\n")
-    }
-    
-    func loadTopicsFromDatabase() {
-        
-    }
-    
-    func saveTopicsToDatabase() {
-        
     }
     
     func getNewTopic() -> TopicObject {
@@ -108,13 +101,12 @@ class TopicsController {
 //    }
     
     func filterTopicCategories() {
-        //MARK: this needs to be rebuilt to work with new data model
-//        for topic in allTopics {
-//            if selectedCategories.contains(topic.topicCategory) {
-//                topicsToSelectFrom.append(topic)
-//            }
-//        }
-        
+        fetchController.topicFetchRequest.predicate = NSPredicate(format: "ANY topicCategory IN %@", selectedCategories)
+        topicsToSelectFrom = fetchController.fetchTopics()
+        for topic in topicsToSelectFrom {
+            print(topic.topicCategory)
+        }
+       
     }
     
     private func getRandomIndex() -> Int {

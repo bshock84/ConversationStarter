@@ -26,8 +26,10 @@ class ViewController: UIViewController {
         navigationItem.title = nil
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let filterVC = storyboard.instantiateViewController(withIdentifier: "filterTableViewController") as! filterTableViewController
+        let filterVC = storyboard.instantiateViewController(withIdentifier: "FilterTableViewController") as! FilterTableViewController
         navigationController?.pushViewController(filterVC, animated: true)
+        
+        // Pushing this topics instance to the FilterTableViewController
         filterVC.topics = topics
         
     }
@@ -43,15 +45,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let results = fetchController.fetchTopics()
-        for result in results {
-            print("Topic text is \(result.topicText) \n")
-            print("Topic category is \(result.topicCategory)\n\n")
-        }
+
 
         // Do any additional setup after loading the view, typically from a nib.
         
-        //topics.filterTopicCategories()
+        topics.filterTopicCategories()
         print(topics.topicsToSelectFrom)
     }
 

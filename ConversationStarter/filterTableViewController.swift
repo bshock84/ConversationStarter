@@ -8,7 +8,7 @@
 
 import UIKit
 
-class filterTableViewController: UITableViewController {
+class FilterTableViewController: UITableViewController {
     
     var topics: TopicsController?
     
@@ -20,16 +20,7 @@ class filterTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if topics == nil {
-            fatalError("Wasn't able to push the topics instance from main view controller")
-        }
         
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,6 +36,17 @@ class filterTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        // This is just a safety check to make sure that the topics instance from the main view controller is
+        // actually being pushed to this view controller, and this topics instance isn't nil.  This is done so
+        // that you can force unwrap the topics variable without having to use guard checks.
+        if topics == nil {
+            print("Wasn't able to push the topics instance from main view controller")
+            navigationController?.popViewController(animated: true)
+            let alertController = AlertController()
+            alertController.showStandardAlert(alertTitle: "Error Loading Categories", alertMessage: "There was an unresolved error loading the list of categories.  Please contact support.")
+            return 0
+        }
         let numberOfRows = TopicCategoryEnum.topicCategoriesArray.count
         return numberOfRows
     }
@@ -53,8 +55,8 @@ class filterTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath)
         
-        let category = TopicCategoryEnum.topicCategoriesArray[indexPath.row]
-        cell.textLabel?.text = category.rawValue
+        let category = TopicCategoryEnum.topicCategoriesArray[indexPath.row].rawValue
+        cell.textLabel?.text = category
         
         if topics!.selectedCategories.contains(category) {
             cell.accessoryType = .checkmark
