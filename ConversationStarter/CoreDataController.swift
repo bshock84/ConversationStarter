@@ -32,11 +32,9 @@ public class DataController: NSObject {
     private lazy var persistantStoreCoordinator: NSPersistentStoreCoordinator = {
        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
         let url = self.applicationDocumentsDirectory.appendingPathComponent("AppData.sqllite")
-        print(url)
         
         do {
             try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
-            print("psc successful")
         } catch {
             let userInfo: [String: Any] = [
                 NSLocalizedDescriptionKey: " Failed to initialize the saved data",

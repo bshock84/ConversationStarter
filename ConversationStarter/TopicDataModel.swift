@@ -10,6 +10,10 @@ import Foundation
 import GameKit
 import CoreData
 
+
+// The TopicCategoryEnum is to prevent using stringly typed categories to help prevent errors.
+// I recomend using it's raw value whenever you need to reference a category
+
 enum TopicCategoryEnum: String {
     case relationship = "Relationships"
     case personalHistory = "Personal History"
@@ -32,31 +36,15 @@ enum TopicCategoryEnum: String {
     case family = "Family"
     case miscellaneous = "Miscellaneous"
     case wouldYouRather = "Would You Rather"
+    case truthOrDare = "Truah Or Dare" //  MARK: IMPORTANT Keep this case out of the topicCategoriesArray!!
     
     //MARK: IMPORTANT!!!: This is an array that holds a list of all the cases in the above enum.  If you add a case to the enum you MUST add it here in the array as well or the app will not work correctly.
     
-//    static let topicCategoriesArray: [TopicCategory] = [.relationship, .personalHistory, .sex, .movies, .music, .hobbies, .books, .sports, .food, .travel, .fashion, .goals, .seasons, .holidays, .education, .politics, .weird, .deep, .family, .miscellaneous, .wouldYouRather]
-//    
+    static let topicCategoriesArray: [TopicCategoryEnum] = [.relationship, .personalHistory, .sex, .movies, .music, .hobbies, .books, .sports, .food, .travel, .fashion, .goals, .seasons, .holidays, .education, .politics, .weird, .deep, .family, .miscellaneous, .wouldYouRather]
+    
 }
 
-//@objc(TopicObject)
-//public class TopicObject: NSManagedObject {
-//    
-//    static let identifier = "TopicObject"
-//    
-//    static let topicFetchRequest: NSFetchRequest = { () -> NSFetchRequest<TopicObject> in
-//        let request = NSFetchRequest<TopicObject>(entityName: TopicObject.identifier)
-//        let sortDescriptor = NSSortDescriptor(key: "topicText", ascending: false)
-//        
-//        request.sortDescriptors = [sortDescriptor]
-//        
-//        return request
-//    }()
 
-//    let topicCategory: TopicCategory
-//    let topicText: String
-//    let dontAskAgain: Bool = false
-//}
 
 //extension TopicObject {
 //    @nonobjc public class func fetchRequest() -> NSFetchRequest<TopicObject> {

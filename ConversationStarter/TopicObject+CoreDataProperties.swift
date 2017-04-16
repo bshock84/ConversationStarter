@@ -12,10 +12,6 @@ import CoreData
 
 extension TopicObject {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<TopicObject> {
-        return NSFetchRequest<TopicObject>(entityName: "TopicObject");
-    }
-
     @NSManaged public var dontAskAgain: Bool
     @NSManaged public var topicText: String
     @NSManaged public var topicCategory: String

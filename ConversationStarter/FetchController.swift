@@ -15,17 +15,34 @@ import CoreData
 
 
 
-class FetchedResultsController: NSFetchedResultsController<TopicObject>, NSFetchedResultsControllerDelegate {
-    private var tableView: UITableView
+//class FetchedResultsController: NSFetchedResultsController<TopicObject>, NSFetchedResultsControllerDelegate {
+//    private var tableView: UITableView
+//    
+//    init(managedObjectContext: NSManagedObjectContext, withTableView tableView: UITableView) {
+//        self.tableView = tableView
+//        super.init()
+//        
+//        self.delegate = self
+//    }
+//}
+
+
+class FetchController {
+    let managedObjectContext = DataController.sharedInstance.managedObjectContext
     
-    init(managedObjectContext: NSManagedObjectContext, withTableView tableView: UITableView) {
-        self.tableView = tableView
-        super.init()
+    let topicFetchRequest = NSFetchRequest<TopicObject>(entityName: TopicObject.identifier)
+    
+    func fetchTopics() -> [TopicObject] {
         
-        self.delegate = self
+        do {
+            let results = try managedObjectContext.fetch(topicFetchRequest) 
+            return results
+        } catch {
+            fatalError("Failed to load the topics from the database \(error)")
+        }
+        
     }
 }
-
 
 
 

@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
     let tests = Test()
+    let fetchController = FetchController()
     
     @IBOutlet weak var topicLabel: UILabel!
     let topics = TopicsController()
@@ -41,8 +42,12 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tests.addAllTestCases()
+        let results = fetchController.fetchTopics()
+        for result in results {
+            print("Topic text is \(result.topicText) \n")
+            print("Topic category is \(result.topicCategory)\n\n")
+        }
+
         // Do any additional setup after loading the view, typically from a nib.
         
         //topics.filterTopicCategories()
