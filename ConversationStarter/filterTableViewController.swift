@@ -13,12 +13,29 @@ class FilterTableViewController: UITableViewController {
     var topics: TopicsController?
     
     
-    
+    func setupToolbar() {
+        let allButton = UIBarButtonItem.init(title: "All", style: .plain, target: self, action: #selector(selectAllCategories))
+        
+        let noneButton = UIBarButtonItem.init(title: "None", style: .plain, target: self, action: #selector(deselectAllCategories))
+        
+        let spacerButton = UIBarButtonItem.init(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        self.setToolbarItems([allButton, spacerButton, noneButton], animated: true)
+        navigationController?.isToolbarHidden = false
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "< Back", style: .plain, target: self, action: #selector(goBackToPreviousViewController))
+     
+    }
     
     override func viewWillAppear(_ animated: Bool) {
+        //setupToolbar()
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupToolbar()
+        
         
         
     }
@@ -42,7 +59,7 @@ class FilterTableViewController: UITableViewController {
         // that you can force unwrap the topics variable without having to use guard checks.
         if topics == nil {
             print("Wasn't able to push the topics instance from main view controller")
-            navigationController?.popViewController(animated: true)
+            _ = navigationController?.popViewController(animated: true)
             let alertController = AlertController()
             alertController.showStandardAlert(alertTitle: "Error Loading Categories", alertMessage: "There was an unresolved error loading the list of categories.  Please contact support.")
             return 0
@@ -70,18 +87,51 @@ class FilterTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-            topics!.removeCategory(index: indexPath)
-            topics!.filterTopicCategories()
-        } else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-            topics!.addCategory(index: indexPath)
-            topics!.filterTopicCategories()
+                setCheckmarkFalse(indexPath: indexPath)
+            } else {
+                setCheckmarkTrue(indexPath: indexPath)
+            }
+        
+    }
+    
+    func selectAllCategories() {
+        let totalRows = tableView.numberOfRows(inSection: 0)
+        for row in 0..<totalRows {
+            tableView.selectRow(at: IndexPath.init(row: row, section: 0), animated: true, scrollPosition: .none)
+            setCheckmarkTrue(indexPath: IndexPath.init(row: row, section: 0))
         }
-  }
+        
+    }
     
+    func deselectAllCategories() {
+        let totalRows = tableView.numberOfRows(inSection: 0)
+        for row in 0..<totalRows {
+            tableView.selectRow(at: IndexPath.init(row: row, section: 0), animated: true, scrollPosition: .none)
+            setCheckmarkFalse(indexPath: IndexPath.init(row: row, section: 0))
+        }
+    }
     
-
+    func setCheckmarkTrue(indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        topics!.addCategory(index: indexPath)
+        topics!.filterTopicCategories()
+    }
+    
+    func setCheckmarkFalse(indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        topics!.removeCategory(index: indexPath)
+        topics!.filterTopicCategories()
+    }
+    
+    func goBackToPreviousViewController() {
+        if topics?.selectedCategories.count == 0 {
+            let alertController = AlertController()
+            alertController.showStandardAlert(alertTitle: "No Categories Selected", alertMessage: "You Must Select At Least One(1) Category")
+        } else {
+            _ = navigationController?.popViewController(animated: true)
+        }
+    }
+    
     
     
     
