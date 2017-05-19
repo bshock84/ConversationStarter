@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     
     let tests = Test()
     let fetchController = FetchController()
+    let openingText = "Welcome to Conversation Starter! \n\nPress \"Get New Topic\" to load a random topic.  \n\nPress \"Filter Topics\" to choose which categories to use.\n"
     
     @IBOutlet weak var topicLabel: UILabel!
     let topics = TopicsController()
@@ -51,6 +52,10 @@ class ViewController: UIViewController {
         
         topics.filterTopicCategories()
         print(topics.topicsToSelectFrom)
+        
+        topicLabel.text = openingText
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
