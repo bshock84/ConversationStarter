@@ -50,7 +50,31 @@ class TopicsController {
     var topicsToSelectFrom: [TopicObject] = []
     private var previouslyUsedTopicIndeces: [Int] = []
     let alertController = AlertController()
-    var selectedCategories: [String] = [TopicCategoryEnum.goals.rawValue, TopicCategoryEnum.weird.rawValue, TopicCategoryEnum.books.rawValue]
+    
+    var selectedCategories: [String] = [
+                                        TopicCategoryEnum.relationship.rawValue,
+                                        TopicCategoryEnum.personalHistory.rawValue,
+                                        TopicCategoryEnum.goals.rawValue,
+                                        TopicCategoryEnum.weird.rawValue,
+                                        TopicCategoryEnum.books.rawValue,
+                                        TopicCategoryEnum.sex.rawValue,
+                                        TopicCategoryEnum.music.rawValue,
+                                        TopicCategoryEnum.movies.rawValue,
+                                        TopicCategoryEnum.hobbies.rawValue,
+                                        TopicCategoryEnum.sports.rawValue,
+                                        TopicCategoryEnum.food.rawValue,
+                                        TopicCategoryEnum.travel.rawValue,
+                                        TopicCategoryEnum.fashion.rawValue,
+                                        TopicCategoryEnum.seasons.rawValue,
+                                        TopicCategoryEnum.holidays.rawValue,
+                                        TopicCategoryEnum.education.rawValue,
+                                        TopicCategoryEnum.politics.rawValue,
+                                        TopicCategoryEnum.deep.rawValue,
+                                        TopicCategoryEnum.family.rawValue,
+                                        TopicCategoryEnum.miscellaneous.rawValue,
+                                        TopicCategoryEnum.wouldYouRather.rawValue
+                                        ]
+    
     let dataController = DataController.sharedInstance
     let fetchController = FetchController()
     
